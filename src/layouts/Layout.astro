@@ -1,0 +1,80 @@
+---
+import Footer from '@/layouts/components/Footer.astro'
+import { Navbar } from '@/layouts/components/Navbar'
+import '@/styles/global.css'
+import 'aos/dist/aos.css'
+
+interface Props {
+  title?: string
+  description?: string
+  canonicalPath?: string
+  noindex?: boolean
+}
+
+const {
+  title = 'Mininos Café | Café 100% Artesanal',
+  description = 'Disfruta del mejor café artesanal',
+  canonicalPath = '',
+  noindex = false,
+} = Astro.props
+
+const siteUrl = Astro.site?.href || ''
+const canonicalUrl = `${siteUrl.replace(/\/$/, '')}${canonicalPath}`
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#E8A598" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Mininos Café',
+        description: 'Disfruta del mejor café artesanal',
+        url: siteUrl,
+        logo: `${siteUrl}logo.png`,
+        sameAs: [
+          'https://instagram.com/mininoscafe',
+          'https://facebook.com/mininoscafe',
+        ],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+54-xxx-xxxx',
+          contactType: 'ventas y pedidos',
+        },
+      })}
+    />
+  </head>
+  <body>
+    <Navbar client:load />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<script>
+  import AOS from 'aos'
+  AOS.init({
+    duration: 700,
+    once: true,
+  })
+</script>

@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+
+@custom-variant hover (&:hover);
+
+@theme inline {
+  --color-background: hsl(35 45% 92%);
+  --color-foreground: hsl(12 30% 20%);
+
+  --color-card: hsl(35 45% 96%);
+  --color-card-foreground: hsl(12 30% 20%);
+
+  --color-popover: hsl(35 45% 96%);
+  --color-popover-foreground: hsl(12 30% 20%);
+
+  --color-primary: hsl(12 52% 15%);
+  --color-primary-foreground: hsl(35 45% 95%);
+
+  --color-secondary: hsl(20 35% 65%);
+  --color-secondary-foreground: hsl(12 40% 15%);
+
+  --color-muted: hsl(30 30% 88%);
+  --color-muted-foreground: hsl(12 20% 35%);
+
+  --color-accent: hsl(6 78% 75%);
+  --color-accent-foreground: hsl(12 40% 15%);
+
+  --color-destructive: hsl(5 70% 55%);
+  --color-destructive-foreground: hsl(0 0% 98%);
+
+  --color-border: hsl(30 25% 82%);
+  --color-input: hsl(30 25% 82%);
+  --color-ring: hsl(12 52% 15%);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --font-sans: 'Nunito', sans-serif;
+  --font-heading: 'Fredoka', sans-serif;
+  --font-hand: 'Patrick Hand', cursive;
+}
+
+.dasd {
+  color: hsl(12, 52%, 15%);
+  background-color: hsl(36, 74%, 89%);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+}
+
+button,
+a,
+nav,
+[role='button'],
+.no-select {
+  @apply select-none;
+}
+
+[role='presentation'],
+.pointer-none,
+svg[aria-hidden='true'] {
+  pointer-events: none;
+}
+
+.absolute.blur-3xl,
+[class*='blob'],
+[class*='pattern'] {
+  @apply pointer-events-none;
+}
+
+svg:not([role='img']) {
+  pointer-events: none;
+}
+
+.font-hand {
+  font-family: var(--font-hand);
+}
+
+.cta-btn {
+  @apply bg-primary hover:bg-primary/90 text-primary-foreground cursor-pointer rounded-2xl px-6 py-3 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md active:scale-95;
+}

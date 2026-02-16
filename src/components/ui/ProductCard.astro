@@ -1,0 +1,53 @@
+---
+interface Props {
+  name: string
+  weight: string
+  price: string
+  desc: string
+  img: string
+  index: number
+}
+
+const { name, weight, price, desc, img, index } = Astro.props
+---
+
+<div
+  class="bg-card group border-border/50 flex flex-col rounded-4xl border shadow-md transition-all duration-300 hover:shadow-lg"
+  data-aos="fade-up"
+  data-aos-delay={index * 50}
+>
+  <div
+    class="bg-secondary/10 mb-6 flex h-64 items-center justify-center overflow-hidden rounded-t-4xl"
+  >
+    <img
+      src={img}
+      alt={name}
+      class="h-auto w-full object-cover drop-shadow-2xl transition-transform duration-500 group-hover:scale-110"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="flex flex-1 flex-col p-4">
+    <div class="mb-2 flex items-center justify-between">
+      <h3 class="font-heading text-foreground text-2xl font-bold">
+        {name}
+      </h3>
+      <span
+        class="text-muted-foreground bg-muted rounded-full px-3 py-1 text-sm font-medium"
+      >
+        {weight}
+      </span>
+    </div>
+
+    <p class="text-muted-foreground mb-6 text-sm">
+      {desc}
+    </p>
+
+    <div class="mt-auto flex items-center justify-between gap-4">
+      <span class="text-primary text-2xl font-bold">
+        {price}
+      </span>
+      <button class="cta-btn font-bold"> Comprar </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+---
+import ProductCard from '@/components/ui/ProductCard.astro'
+
+const coffeeProducts = [
+  {
+    name: 'Origen Volcánico',
+    weight: '250g',
+    price: '350 CUP',
+    desc: 'Notas de chocolate amargo y frutos secos del corazón de la tierra.',
+    img: '/coffee-mininos.webp',
+  },
+  {
+    name: 'Bruma de Montaña',
+    weight: '500g',
+    price: '350 CUP',
+    desc: 'Cuerpo medio con aroma cítrico y miel recolectada en altura.',
+    img: '/coffee-mininos.webp',
+  },
+  {
+    name: 'Reserva del Abuelo',
+    weight: '250g',
+    price: '350 CUP',
+    desc: 'Edición limitada de tostado lento, receta familiar de 1945.',
+    img: '/coffee-mininos.webp',
+  },
+]
+---
+
+<section
+  id="products"
+  data-aos="fade-up"
+  class="bg-background px-6 py-24 md:px-12 lg:px-24"
+>
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center" data-aos="fade-down">
+      <span class="font-hand text-primary block text-xl"
+        >Selección Especial</span
+      >
+      <h2 class="font-heading text-foreground text-4xl font-bold md:text-5xl">
+        Nuestros Cafés
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+      {
+        coffeeProducts.map((coffee, index) => (
+          <ProductCard
+            name={coffee.name}
+            weight={coffee.weight}
+            price={coffee.price}
+            desc={coffee.desc}
+            img={coffee.img}
+            index={index}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

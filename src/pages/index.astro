@@ -1,17 +1,22 @@
 ---
-
+import Layout from '@/layouts/Layout.astro'
+import Features from '@/components/sections/Features.astro'
+import Products from '@/components/sections/Products.astro'
+import About from '@/components/sections/About.astro'
+import Hero from '@/components/sections/Hero.astro'
+import QuoteSection from '@/components/sections/QuoteSection.astro'
+import Contact from '@/components/sections/Contact'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Mininos Café | Café 100% Artesanal"
+  description="Descubre el auténtico sabor del café artesanal. Granos seleccionados, tostado tradicional y pasión en cada taza."
+  canonicalPath="/"
+>
+  <Hero />
+  <Products />
+  <About />
+  <Features />
+  <QuoteSection />
+  <Contact />
+</Layout>
