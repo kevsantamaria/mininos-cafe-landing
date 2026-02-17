@@ -1,0 +1,43 @@
+---
+interface Props {
+  name: string
+  url: string
+  icon: string
+  label: string
+  index: number
+}
+
+const { label, name, icon, url, index } = Astro.props
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group bg-background border-border/50 flex flex-col items-center gap-4 rounded-4xl border p-8 text-center shadow-sm transition-all hover:shadow-md"
+  data-aos="zoom-in"
+  data-aos-delay={index * 50}
+>
+  <span
+    class="text-5xl transition-transform duration-300 group-hover:scale-110"
+  >
+    {icon}
+  </span>
+
+  <div>
+    <h4
+      class="font-heading text-foreground group-hover:text-primary font-bold transition-colors"
+    >
+      {name}
+    </h4>
+    <p class="text-muted-foreground mt-1 text-xs tracking-widest uppercase">
+      {label}
+    </p>
+  </div>
+
+  <span
+    class="text-primary text-sm font-bold opacity-0 transition-opacity group-hover:opacity-100"
+  >
+    Visitar tienda →
+  </span>
+</a>

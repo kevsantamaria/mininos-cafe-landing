@@ -1,0 +1,56 @@
+---
+import StockistCard from '../ui/StockistCard.astro'
+
+// Stockists.astro
+const shops = [
+  {
+    name: 'Amazon Prime',
+    icon: '📦',
+    url: 'https://amazon.com',
+    label: 'Tienda oficial',
+  },
+  {
+    name: 'Gourmet Experience',
+    icon: '🏬',
+    url: '#',
+    label: 'Puntos físicos',
+  },
+  {
+    name: 'Coffee App',
+    icon: '📱',
+    url: '#',
+    label: 'Envío a domicilio',
+  },
+  {
+    name: 'Mercado Local',
+    icon: '🏘️',
+    url: '#',
+    label: 'Comercio justo',
+  },
+]
+---
+
+<section id="where-to-buy" class="bg-muted/30 px-6 py-20">
+  <div class="mx-auto max-w-5xl">
+    <div class="mb-12 text-center" data-aos="fade-up">
+      <h2 class="font-heading text-foreground text-3xl font-bold md:text-4xl">
+        ¿Donde encontrarnos?
+      </h2>
+      <div class="bg-accent mx-auto mt-4 h-1 w-24 rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      {
+        shops.map((shop, index) => (
+          <StockistCard
+            name={shop.name}
+            label={shop.label}
+            url={shop.url}
+            icon={shop.icon}
+            index={index}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
