@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -6,7 +7,14 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'products', 'about', 'features', 'cta']
+      const sections = [
+        'home',
+        'products',
+        'about',
+        'features',
+        'where-to-buy',
+        'cta',
+      ]
       let current = 'home'
 
       for (const section of sections) {
@@ -29,15 +37,15 @@ export const Navbar = () => {
     { href: '#products', label: 'Productos', id: 'products' },
     { href: '#about', label: 'Nuestra Historia', id: 'about' },
     { href: '#features', label: 'Servicios', id: 'features' },
+    { href: '#where-to-buy', label: 'Encuéntranos', id: 'where-to-buy' },
   ]
 
   return (
-    <nav className="bg-background/80 sticky top-0 z-50 flex w-full items-center justify-between border-b px-6 py-4 shadow-xs backdrop-blur-lg md:px-12">
+    <nav className="bg-background/80 sticky top-0 z-50 flex w-full items-center justify-between px-6 py-3 backdrop-blur-lg md:px-12">
       <a
         href="/"
         className="text-primary flex items-center gap-2 transition-opacity hover:opacity-80"
       >
-        {/*<img src="/favicon.png" alt="Logo" className="h-22 w-22" />*/}
         <span className="font-heading text-foreground text-2xl font-bold">
           Mininos Café
         </span>
@@ -49,26 +57,27 @@ export const Navbar = () => {
           <a
             key={link.id}
             href={link.href}
-            data-testid={`link-${link.id}`}
-            className={`relative w-fit transition-colors ${
+            className={`font-heading relative w-fit transition-colors duration-300 ${
               activeSection === link.id
-                ? 'text-primary font-bold'
+                ? 'text-primary'
                 : 'text-muted-foreground hover:text-primary'
             }`}
           >
-            <div>
-              {link.label}
-              {activeSection === link.id && (
-                <div className="bg-primary absolute right-0 bottom-0 left-0 h-1 rounded-full" />
-              )}
-            </div>
+            <span className="relative z-10">{link.label}</span>
+
+            {/* El truco de la transición está aquí */}
+            {activeSection === link.id && (
+              <motion.div
+                layoutId="activeTab"
+                className="bg-primary absolute right-0 bottom-0 left-0 h-1 rounded-full"
+                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+              />
+            )}
           </a>
         ))}
+
         <a href="/join">
-          <button
-            data-testid="button-join-nav"
-            className="font-heading cta-btn font-medium"
-          >
+          <button className="font-heading cta-btn font-medium">
             Contáctanos
           </button>
         </a>
@@ -78,49 +87,37 @@ export const Navbar = () => {
       <button
         className="text-foreground bg-primary/10 hover:bg-primary/25 rounded-full p-2 transition-colors md:hidden"
         onClick={() => setIsOpen(!isOpen)}
-        data-testid="button-menu-toggle"
       >
         {isOpen ? 'X' : '='}
       </button>
 
       {/* Mobile Nav Menu */}
       {isOpen && (
-        <div
-          key="mobile-menu"
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           className="bg-card border-border/60 absolute top-full right-4 left-4 z-50 mt-2 flex w-[calc(100%-2rem)] flex-col gap-6 rounded-2xl border p-8 shadow-2xl md:hidden"
         >
-          {navLinks.map((link, idx) => (
+          {navLinks.map((link) => (
             <a
               key={link.id}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              data-testid={`link-${link.id}-mobile`}
-              className={`w-fit text-center text-lg font-medium transition-colors duration-300 ${
-                activeSection === link.id
-                  ? 'text-primary font-bold'
-                  : 'text-foreground hover:text-primary'
+              className={`w-fit text-lg font-medium transition-colors ${
+                activeSection === link.id ? 'text-primary' : 'text-foreground'
               }`}
             >
               {link.label}
             </a>
           ))}
           <div className="border-border/40 border-t pt-6">
-            <a
-              href="/join"
-              className="block w-full"
-              onClick={() => setIsOpen(false)}
-            >
-              <div>
-                <button
-                  data-testid="button-join-mobile"
-                  className="cta-btn font-heading w-full font-medium"
-                >
-                  Contáctanos
-                </button>
-              </div>
+            <a href="/join" onClick={() => setIsOpen(false)}>
+              <button className="cta-btn font-heading w-full font-medium">
+                Contáctanos
+              </button>
             </a>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   )

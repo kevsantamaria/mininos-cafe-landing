@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-@custom-variant hover (&:hover);
-
 @theme inline {
   --color-background: hsl(35 45% 92%);
   --color-foreground: hsl(12 30% 20%);
@@ -51,10 +49,6 @@
     scroll-behavior: smooth;
   }
 
-  * {
-    @apply border-border;
-  }
-
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
@@ -67,30 +61,6 @@
   h6 {
     @apply font-heading font-semibold tracking-tight;
   }
-}
-
-button,
-a,
-nav,
-[role='button'],
-.no-select {
-  @apply select-none;
-}
-
-[role='presentation'],
-.pointer-none,
-svg[aria-hidden='true'] {
-  pointer-events: none;
-}
-
-.absolute.blur-3xl,
-[class*='blob'],
-[class*='pattern'] {
-  @apply pointer-events-none;
-}
-
-svg:not([role='img']) {
-  pointer-events: none;
 }
 
 .font-hand {
