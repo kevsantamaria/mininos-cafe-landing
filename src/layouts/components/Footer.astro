@@ -1,5 +1,9 @@
 ---
 const currentYear = new Date().getFullYear()
+import IconLink from '@/components/icons/IconLink.astro'
+import IconFacebook from '@/components/icons/IconFacebook.astro'
+import IconInstagram from '@/components/icons/IconInstagram.astro'
+import IconWhatsApp from '@/components/icons/IconWhatsApp.astro'
 ---
 
 <footer
@@ -23,7 +27,7 @@ const currentYear = new Date().getFullYear()
       <div class="grid grid-cols-2 gap-4">
         <div class="space-y-4">
           <div class="text-primary-foreground flex items-center gap-2">
-            <span class="text-sm">📖</span>
+            <IconLink />
             <span
               class="font-heading text-sm font-bold tracking-wider uppercase"
               >Links</span
@@ -46,7 +50,7 @@ const currentYear = new Date().getFullYear()
               href="#features"
               class="text-primary-foreground/80 hover:text-accent text-sm transition-colors"
             >
-              Servicios
+              Esencia
             </a>
             <a
               href="#where-to-buy"
@@ -58,31 +62,30 @@ const currentYear = new Date().getFullYear()
         </div>
 
         <div class="space-y-4">
-          <div class="text-primary-foreground flex items-center gap-2">
-            <span class="text-sm">👥</span>
-            <span
-              class="font-heading text-sm font-bold tracking-wider uppercase"
-              >Comunidad</span
-            >
-          </div>
           <nav class="flex flex-col gap-3 pl-7">
             <a
               href="/contacto"
-              class="text-primary-foreground/80 hover:text-accent text-sm transition-colors"
+              class="text-primary-foreground/80 hover:text-accent flex items-center gap-1 text-sm transition-colors"
             >
-              Contáctanos
+              <IconFacebook /> Facebook
             </a>
             <a
-              href="/nosotros"
-              class="text-primary-foreground/80 hover:text-accent text-sm transition-colors"
+              href="/contacto"
+              class="text-primary-foreground/80 hover:text-accent flex items-center gap-1 text-sm transition-colors"
             >
-              Nuestra Historia
+              <IconInstagram /> Instagram
+            </a>
+            <a
+              href="/contacto"
+              class="text-primary-foreground/80 hover:text-accent flex items-center gap-1 text-sm transition-colors"
+            >
+              <IconWhatsApp /> WhatsApp
             </a>
           </nav>
         </div>
       </div>
 
-      <div class="flex flex-col justify-center space-y-5">
+      <!-- <div class="flex flex-col justify-center space-y-5">
         <div class="space-y-2">
           <h4 class="font-heading text-lg font-bold text-white">
             Únete a nuestro Club
@@ -101,7 +104,7 @@ const currentYear = new Date().getFullYear()
             </button>
           </a>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="my-10 border-t border-white/10"></div>
