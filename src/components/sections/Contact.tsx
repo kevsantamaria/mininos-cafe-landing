@@ -22,10 +22,7 @@ export default function Contact() {
   }
 
   return (
-    <div
-      className="from-primary/5 via-background to-secondary/5 min-h-screen bg-linear-to-br py-12"
-      data-aos="fade-up"
-    >
+    <div className="min-h-screen py-8" data-aos="fade-up">
       <div className="mx-auto max-w-2xl">
         <div className="space-y-8">
           <div className="space-y-4 text-center">
@@ -52,7 +49,7 @@ export default function Contact() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       data-testid="input-contact-name"
-                      className="border-border bg-background focus:border-primary w-full rounded-lg border-2 px-4 py-3 transition-colors focus:outline-none"
+                      className="border-border focus:border-primary w-full rounded-lg border-2 bg-white px-4 py-3 transition-colors focus:outline-none"
                     />
                   </div>
 
@@ -66,7 +63,7 @@ export default function Contact() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       data-testid="input-contact-email"
-                      className="border-border bg-background focus:border-primary w-full rounded-lg border-2 px-4 py-3 transition-colors focus:outline-none"
+                      className="border-border focus:border-primary w-full rounded-lg border-2 bg-white px-4 py-3 transition-colors focus:outline-none"
                     />
                   </div>
 
@@ -80,7 +77,7 @@ export default function Contact() {
                       onChange={(e) => setMessage(e.target.value)}
                       data-testid="textarea-contact-message"
                       rows={5}
-                      className="border-border bg-background focus:border-primary w-full resize-none rounded-lg border-2 px-4 py-3 transition-colors focus:outline-none"
+                      className="border-border focus:border-primary w-full resize-none rounded-lg border-2 bg-white px-4 py-3 transition-colors focus:outline-none"
                     />
                   </div>
 
